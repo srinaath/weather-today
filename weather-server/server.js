@@ -2,13 +2,13 @@ const express  = require('express');
 const app      = express();
 const httpProxy = require('http-proxy-middleware');
 const serverOne = 'https://www.metaweather.com/api/';
-const port = '8000';
+const port = process.env.PORT || '8000';
 const cors = require('cors');
+const path = require('path');
 const axios = require('axios');
 app.use(cors());
 
-
-app.all('*', function(req, res) {
+function processRequest(req, res) {
   console.log(req);
   return axios.get(serverOne + req.originalUrl).then((resp) => {
     if(resp.status == 200){
@@ -19,6 +19,19 @@ app.all('*', function(req, res) {
     res.status(er.response.status);
     res.json(er.response.data);
   });
+};
+
+app.get('/api/location/*', processRequest);
+
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/index.html'));
+});
+
+app.use(express.static('public'));
+
+app.get('*', function(req, res) {
+      res.sendFile(path.resolve(__dirname) + '/public/index.html');
 });
 
 // app.use('/api/*', httpProxy(serverOne, {
