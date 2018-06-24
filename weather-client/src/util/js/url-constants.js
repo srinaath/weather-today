@@ -5,4 +5,49 @@ let constants = {
   'WELL_KNOW_REQUEST_URL': 'location/search',
   'LOCATION_SEARCH_URL': 'location/'
 };
+
+constants.days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+constants.weatherStateAbbr = {
+    "c": {
+        imgValue: 'c.svg',
+        name: "Clear"
+    },
+    "h": {
+        imgValue: 'h.svg',
+        name: "Hail"
+    },
+    "hc": {
+        imgValue: 'hc.svg',
+        name: "Heavy Cloud"
+    },
+    "hr": {
+        imgValue: 'hr.svg',
+        name: "Heavy Rain"
+    },
+    "lr": {
+        imgValue: 'lr.svg',
+        name: "Light Rain"
+    },
+    "lc": {
+        imgValue: 'lc.svg',
+        name: "Light Cloud"
+    },
+    "s": {
+        imgValue: 's.svg',
+        name: "Showers"
+    },
+    "sl": {
+        imgValue: 'sl.svg',
+        name: "Sleet"
+    },
+    "sn": {
+        imgValue: 'sn.svg',
+        name: "Snow"
+    },
+    "t": {
+        imgValue: 't.svg',
+        name: "Thunderstorm"
+    }
+};
+
 export default constants;
