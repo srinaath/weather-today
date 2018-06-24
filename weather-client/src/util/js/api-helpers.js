@@ -35,9 +35,9 @@ export function getWellKnowPlaceId(latLong) {
   const stringifiedParams = queryString.stringify(queryParams);
   const wellKnownUrl = `${baseMetaWeatherUrl}?${stringifiedParams}`
 
-  return axios.get(wellKnownUrl)
+  return axios.get('http://localhost:8000/api/location/search?lattlong=39.7429243%2C-104.9830468')
     .then(results => {
-      const wellKnowId = get(results,'data.woeid', -1);
+      const wellKnowId = get(results,'data[0].woeid', -1);
       return wellKnowId;
     })
     .catch(ex => {
@@ -47,7 +47,7 @@ export function getWellKnowPlaceId(latLong) {
 }
 
 export function getWeatherInfo(whereOnEarthId) {
-  const locationUrl = `${urlConstants.BASE_URL}/${urlConstants.LOCATION_SEARCH_URL}/${whereOnEarthId}`
+  const locationUrl = `${urlConstants.BASE_URL}${urlConstants.LOCATION_SEARCH_URL}${whereOnEarthId}`
 
   return axios.get(locationUrl)
     .then(results => {

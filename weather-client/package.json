@@ -5,13 +5,14 @@
   "dependencies": {
     "axios": "^0.17.1",
     "classnames": "^2.2.5",
+    "express-http-proxy": "^1.2.0",
     "flexboxgrid-sass": "^8.0.5",
     "lodash.get": "^4.4.2",
     "mkdirp": "^0.5.1",
     "node-sass-chokidar": "0.0.3",
     "react": "^16.2.0",
-    "react-scripts": "1.0.17",
     "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
     "source-map-explorer": "^1.5.0"
   },
   "scripts": {
