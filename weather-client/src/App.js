@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import SearchInput from './components/search-input/search-input';
+import SearchOutput from './components/search-output/search-output';
 
 import {getLatLongFromGoogleGeocoder, getWellKnowPlaceId, getWeatherInfo} from '../src/util/js/api-helpers';
 
@@ -14,7 +15,8 @@ class App extends Component {
 
     this.state = {
       searchInputText: '',
-      errorText: ''
+      errorText: '',
+      searchResults: null
     }
   }
 
@@ -30,7 +32,9 @@ class App extends Component {
           getWellKnowPlaceId(latLong).then((wellKnownEarthId) => {
             if(wellKnownEarthId) {
               getWeatherInfo(wellKnownEarthId).then(weatherResults => {
-                console.log(weatherResults);
+                this.setState({
+                  searchResults: weatherResults
+                });
               });
             }
           });
@@ -53,6 +57,7 @@ class App extends Component {
             Weather Today
           </h1>
           <SearchInput searchText={this.state.searchInputText} onSearchButtonClicked = {this.onSearchButtonClicked} onSearchTextChanged = {this.onSearchTextChanged}/>
+          <SearchOutput searchResults = {this.state.searchResults}/>
         </div>
       </div>
     );
