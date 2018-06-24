@@ -1,10 +1,11 @@
 let constants = {
-  BASE_URL: 'http://localhost:8000/api/',
+  BASE_URL: process.env.REACT_APP_BASEURL,
   GOOGLE_ADDRESS_SEARCH_URL: 'https://maps.googleapis.com/maps/api/geocode/json',
   GOOGLE_API_KEY: 'AIzaSyDHgwYiOsSK5Ag2F_ID5kuAAj-bfwcEGqI',
   'WELL_KNOW_REQUEST_URL': 'location/search',
   'LOCATION_SEARCH_URL': 'location/'
 };
+console.log('Base', constants.BASE_URL);
 
 constants.days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 constants.weatherStateAbbr = {
