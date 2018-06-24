@@ -16,17 +16,21 @@ export function getLatLongFromGoogleGeocoder(address) {
     return axios.get(googleMapsGeocodeUrl)
       .then(geocodeResults => {
         const latLongObj = get(geocodeResults.data,'results[0].geometry.location', {});
-        return latLongObj;
+        return {
+          lat: latLongObj.lat,
+          long: latLongObj.lng
+        };
       })
       .catch(ex => {
         console.log('Geoceder URL from google seems to be down.', ex);
+        return null;
     });
 }
 
 export function getWellKnowPlaceId(latLong) {
   const baseMetaWeatherUrl = urlConstants.BASE_URL + urlConstants.WELL_KNOW_REQUEST_URL;
   const queryParams = {
-    lattlong: `${latLong.lat},{latLong.long}`
+    lattlong: `${latLong.lat},${latLong.long}`
   };
   const stringifiedParams = queryString.stringify(queryParams);
   const wellKnownUrl = `${baseMetaWeatherUrl}?${stringifiedParams}`
@@ -38,6 +42,7 @@ export function getWellKnowPlaceId(latLong) {
     })
     .catch(ex => {
       console.log('Error fetching where on earth id', ex);
+      return null;
   });
 }
 
@@ -50,5 +55,6 @@ export function getWeatherInfo(whereOnEarthId) {
     })
     .catch(ex => {
       console.log('Error fetching weather data', ex);
+      return null;
   });
 }
