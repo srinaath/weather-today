@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "classnames": "^2.2.5",
+    "cpx": "^1.5.0",
     "express-http-proxy": "^1.2.0",
     "flexboxgrid-sass": "^8.0.5",
     "lodash.get": "^4.4.2",
@@ -24,8 +25,8 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "delete-public-folder": "rimraf ../public",
-    "copy-public": "./node_modules/.bin/cpx \"./build/**/**.*\" ../public",
-    "create-public": "mkdirp ../public",
+    "copy-public": "./node_modules/.bin/cpx \"./build/**/**.*\" ../weather-server/public",
+    "create-public": "mkdirp ../weather-server/public",
     "build": "npm-run-all build-css build-js",
     "publish": "npm-run-all build delete-public-folder create-public copy-public",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
