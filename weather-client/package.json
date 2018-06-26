@@ -1,5 +1,5 @@
 {
-  "name": "chipotle-account-link",
+  "name": "weather-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,8 +25,8 @@
     "start": "npm-run-all -p watch-css start-js",
     "build-js": "react-scripts build",
     "delete-public-folder": "rimraf ../public",
-    "copy-public": "./node_modules/.bin/cpx \"./build/**/**.*\" ../weather-server/public",
-    "create-public": "mkdirp ../weather-server/public",
+    "copy-public": "./node_modules/.bin/cpx \"./build/**/**.*\" ../public",
+    "create-public": "mkdirp ../public",
     "build": "npm-run-all build-css build-js",
     "publish": "npm-run-all build delete-public-folder create-public copy-public",
     "test": "cross-env CI=true react-scripts test --env=jsdom",
